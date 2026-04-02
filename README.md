@@ -199,7 +199,7 @@ Recency is the strongest churn predictor. A customer who hasn't purchased in 90+
 
 **[Ajsar Rihal Athiyattil]**
 Data Analyst | MSc Data Science
-[LinkedIn](www.linkedin.com/in/ajsarrihalathiyattil) ·
+[LinkedIn](www.linkedin.com/in/ajsarrihalathiyattil).
 
 ---
 
