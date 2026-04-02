@@ -205,4 +205,5 @@ Data Analyst | MSc Data Science
 
 ## License
 
-MIT License — see [LICENSE](LICENSE) for details.
+MIT License — see [LICENSE](LICENSE.md)for dtails
+
