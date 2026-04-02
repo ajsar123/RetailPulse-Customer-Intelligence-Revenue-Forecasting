@@ -1,0 +1,146 @@
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║           RETAILPULSE — EXECUTIVE ANALYTICS REPORT                         ║
+║           Generated: 2026-04-02 14:02                                  ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ SECTION 1 · BUSINESS OVERVIEW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Dataset:       UK Online Gift Retailer Transactions (2010–2011)
+  Analysis Date: 2026-04-02
+  Methodology:   RFM Segmentation + SARIMA Forecasting + Churn Prediction
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ SECTION 2 · REVENUE PERFORMANCE KPIs
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Total Revenue (period):    £5,140,479.05
+  Average Monthly Revenue:   £  214,186.63
+  Peak Month:                              2010-12
+  YoY Revenue Growth:                    1.9%
+
+  Median Basket Value:       £      191.88
+  Mean Basket Value:         £      252.94
+  Median Items per Order:                4
+  Average Return Rate:                4.1%
+
+  FINDING: Strong Q4 seasonality is confirmed. Peak trading in Nov–Dec
+  accounts for disproportionate revenue share, consistent with gift retail.
+  Recommendation: Pre-position inventory in September; launch loyalty
+  campaigns in October to capture early holiday shoppers.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ SECTION 3 · CUSTOMER SEGMENTATION RESULTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Clusters: 2  (K-Means, Silhouette-optimised)
+
+        Segment  Customers    Revenue  Customer_Pct  Revenue_Pct
+      Champions       4065 4087455.18     56.757889    79.515063
+Loyal Customers       3097 1053023.87     43.242111    20.484937
+
+  STRATEGIC IMPLICATIONS:
+  ┌────────────────────────┬──────────────────────────────────────────────┐
+  │ Segment                │ Recommended Action                           │
+  ├────────────────────────┼──────────────────────────────────────────────┤
+  │ Champions              │ VIP programme, early access, referral asks   │
+  │ Loyal Customers        │ Upsell premium SKUs, solicit reviews         │
+  │ Potential Loyalists    │ Loyalty programme invitation, nurture emails  │
+  │ At Risk                │ Win-back discount (time-limited offer)       │
+  │ Hibernating/Lost       │ Re-engagement or sunset from active lists    │
+  └────────────────────────┴──────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ SECTION 4 · REVENUE FORECAST (SARIMA)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Model:    SARIMA(1,1,1)(1,1,1,12)
+  AIC:      10.0
+  RMSE:    £   34725.4
+  MAE:     £  25648.35
+  MAPE:     7.61%
+
+  3-Month Revenue Forecast:
+      Jan 2012:  £  379,626.88
+      Feb 2012:  £  198,142.56
+      Mar 2012:  £  208,451.92
+
+  FINDING: SARIMA captures the annual seasonal pattern well. Forecast
+  confidence intervals widen appropriately at longer horizons.
+  Recommendation: Use forecast upper bound for inventory planning;
+  lower bound for cash flow stress-testing.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ SECTION 5 · CHURN RISK PREDICTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Model:        Gradient Boosting Classifier
+  CV AUC-ROC:   1.0 ± 0.0
+  Test AUC-ROC: 1.0
+
+  Top Churn Predictors:
+    log_Recency               1.0000
+    log_Monetary              0.0000
+    Tenure_Days               0.0000
+    RFM_Score                 0.0000
+
+  FINDING: AUC-ROC > 0.75 indicates meaningful predictive signal.
+  Recency is the dominant predictor — as expected, customers who haven't
+  purchased recently are most likely to churn.
+  Recommendation: Flag customers with Churn_Probability > 0.7 for
+  immediate win-back outreach.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ SECTION 6 · HYPOTHESIS TEST: UK vs. INTERNATIONAL BASKETS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Test:        Mann-Whitney U (non-parametric, two-sided)
+  H₀:          No difference in median basket value between markets
+  UK Median:  £192.77
+  Intl Median:£187.37
+  p-value:     0.410985
+  Result:      FAIL TO REJECT H₀
+
+  FINDING: No significant difference found at α=0.05.
+  Recommendation: Apply uniform pricing strategy across markets.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ SECTION 7 · ANOMALY DETECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Method:          STL Decomposition + IQR Fence (×2.5)
+  Anomalous Days:  31
+
+  FINDING: Anomaly days warrant manual investigation. High-spike days
+  may represent flash sales or bulk B2B orders. Low-drop days may
+  indicate website outages or payment processing failures.
+  Recommendation: Build a real-time anomaly alert dashboard for ops team.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ SECTION 8 · LIMITATIONS & FUTURE IMPROVEMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Limitations:
+  1. Synthetic data — while statistically realistic, it cannot capture
+     true idiosyncratic business events (competitor launches, COVID, etc.)
+  2. RFM ignores product affinity — two customers with identical RFM may
+     have completely different category preferences.
+  3. SARIMA assumes stationary seasonal patterns — structural breaks
+     (new product lines, market entry) require intervention modelling.
+  4. Churn threshold (90 days) is heuristic — should be calibrated
+     against actual customer lifecycle data.
+
+  Future Improvements:
+  ─────────────────────────────────────────────────────────────────────────
+  ► Customer Lifetime Value (CLV) prediction using Pareto/NBD + BG/BB models
+  ► Market Basket Analysis (Apriori / FP-Growth) for cross-sell rules
+  ► Real-time streaming pipeline (Kafka → Spark → Delta Lake)
+  ► A/B test framework for win-back campaign evaluation
+  ► NLP on product descriptions for category taxonomy extraction
+  ► Neural Temporal Fusion Transformer for probabilistic forecasting
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ END OF REPORT  ·  RetailPulse Analytics  ·  Confidential
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
